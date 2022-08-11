@@ -9,8 +9,8 @@ export default function Projects({repos}) {
   return (
     <Layout>
       <div className="grid grid-cols-1 gap-2 lg:grid-cols-2 2xl:grid-cols-3 lg:gap-3">
-        {repos.map((repo) => (
-          <div className="bg-gray-900 rounded-xl mb-1 p-5 md:p-6 h-auto">
+        {repos.map((repo, index) => (
+          <div key={index} className="bg-gray-900 rounded-xl mb-1 p-5 md:p-6 h-auto">
             <div className="mb-3 pb-3 text-3xl border-b-2 border-gray-800">
               <Link href={repo.html_url}>
                 <a className="flex">
