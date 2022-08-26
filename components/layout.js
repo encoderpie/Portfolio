@@ -10,10 +10,12 @@ function Layout({ children }) {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <link rel="shortcut icon" href="/web_icons/code.png" />
       </Head>
-      <div className="flex flex-col h-screen justify-between">
-        <Navigation />
-        <div className='px-6 lg:px-10 py-6 h-full bg-gradient-to-r from-sky-900 via-blue-600 to-sky-900'>{children}</div>
-        <Footer />
+      <div className='h-screen'>
+        <div className="flex h-full flex-col justify-between">
+          <Navigation />
+          <div className='px-6 lg:px-10 py-6 flex-1 bg-gradient-to-r from-sky-900 via-blue-600 to-sky-900'>{children}</div>
+          <Footer />
+        </div>
       </div>
     </div>
   )

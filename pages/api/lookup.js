@@ -63,27 +63,40 @@ const badgesList = {
   },
 }
 
-async function getUser(id) {
+async function getData(id) {
   try {
     const response = await axios.get(`https://discord.com/api/v10/users/${id}`, {
       headers: {
         Authorization: `Bot ${process.env.DISCORD_BOT_TOKEN}`
       }
     })
-    return response.data
+    return {data: response.data, guild: false, user: true}
   } catch (error) {
-    return null
+    try {
+      const response_preview = await axios.get(`https://discord.com/api/v10/guilds/${id}/preview`, {
+        headers: {
+          Authorization: `Bot ${process.env.DISCORD_BOT_TOKEN}`
+        }
+      })
+      const response_channels = await axios.get(`https://discord.com/api/v10/guilds/${id}/channels`, {
+        headers: {
+          Authorization: `Bot ${process.env.DISCORD_BOT_TOKEN}`
+        }
+      })
+      return {data: {preview: response_preview.data, channels: response_channels.data}, guild: true, user: false}
+    } catch (error) {
+      return {data: null, guild: null, user: null}
+    }
   }
 }
 
 export default async function LookUpApi(req, res) {
   const body = req.body
   const id = body.id
-  const userData = await getUser(id)
-  if (userData == null) {
-    return res.status(400).json({not_exist: 'error'})
-  } else {  
-    // User general infos
+  const dataResponse = await getData(id)
+  //console.log(dataResponse)
+  if (dataResponse.user) {
+    const userData = dataResponse.data// User general infos
     const username      = userData.username
     const discriminator = userData.discriminator
     const avatar_url    = userData.avatar ? `https://cdn.discordapp.com/avatars/${id}/${userData.avatar}?size=4096` : null
@@ -111,6 +124,7 @@ export default async function LookUpApi(req, res) {
     
     const responseUserData = {
       id,
+      user: true,
       username,
       discriminator,
       avatar_url,
@@ -124,5 +138,36 @@ export default async function LookUpApi(req, res) {
     }
     console.log(responseUserData)
     res.status(200).json(responseUserData)
+  } else if (dataResponse.guild) {
+    const guildData = dataResponse.data.preview
+    const guildChannelsData = dataResponse.data.channels
+
+    const id = guildData.id
+    const icon_id = guildData.icon
+    const splash_id = guildData.splash
+    
+    const responseGuildData = {
+      id,
+      name: guildData.name,
+      icon_url: `https://cdn.discordapp.com/icons/${id}/${icon_id}.png?size=4096`,
+      splash_url: `https://cdn.discordapp.com/splashes/${id}/${splash_id}.png?size=4096`,
+      description: guildData.description,
+      member_count: guildData.approximate_member_count,
+      presence_count: guildData.approximate_presence_count,
+      emojis: guildData.emojis,
+      stickers: guildData.stickers,
+    }
+
+    //console.log('CHANNELS::::')
+    console.log(guildData.stickers)
+
+    //console.log(guildChannelsData)
+    const responseGuildChannelsData = {
+      channels: guildChannelsData,
+      channels_length: guildChannelsData.length
+    }
+    res.status(200).json({guildData: responseGuildData, channelsData: responseGuildChannelsData})
+  } else {
+    res.status(200).json({error: true})
   }
 }

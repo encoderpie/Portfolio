@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 function Navigation() {
   return (
-    <nav className="p-3 bg-gray-50 border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+    <nav className="p-3 bg-gray-50 border-gray-200 dark:bg-gray-800 dark:border-gray-700 flex-none">
       <div className="container flex flex-wrap justify-between items-center mx-auto">
         <Link href="/#">
           <a className="flex items-center">
