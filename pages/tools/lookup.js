@@ -10,10 +10,11 @@ export default function LookUp() {
 
   const submitForm = async (e) => {
     e.preventDefault()
-
-    const res = await axios.post('../api/lookup', {id})
-    console.log(res.data)
-    if (res.data) setData(res.data)
+    
+    if (id != data.id) {
+      const res = await axios.post('../api/lookup', {id})
+      if (res.data) setData(res.data)
+    }
   }
 
   return (
@@ -66,13 +67,13 @@ export default function LookUp() {
                   width="100%"
                 />
               ) : (
-                <div className="banner_color object-cover rounded-t-xl w-full h-24"></div>
+                <div className="banner_color object-cover rounded-t-xl w-full h-16"></div>
               )}
               <div className="mx-4 my-2 pb-3 border-b border-gray-800 text-2xl">
                 <div className="flex">
                   <div className="w-full">
                     <img
-                      src={data.avatar_url}
+                      src={data.avatar_url ? data.avatar_url : '/tools/default_avatar.png'}
                       className="avatar border-4 border-gray-900 bg-gray-900 rounded-full"
                       width="95"
                     />
