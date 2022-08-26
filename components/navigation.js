@@ -54,14 +54,21 @@ function Navigation() {
                 </a>
               </Link>
             </li>
+            <li>
+              <Link href="tools/lookup/">
+                <a className="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
+                  Discord Lookup
+                </a>
+              </Link>
+            </li>
           </ul>
         </div>
         <div className="flex">
-          <div className="rounded px-3 pt-0.5 h-8 bg-blue-700">
-            <Link href="/projects">
-              <a className="hover:text-sky-300 text-sm">My projects</a>
-            </Link>
-          </div>
+          <Link href="/projects">
+            <div role="button" className="rounded px-3 pt-0.5 h-8 bg-blue-700 hover:bg-blue-800">
+              <a className="text-sm">My projects</a>
+            </div>
+          </Link>
           <Link href="https://github.com/encoderpie">
             <a className='ml-3 mt-1'>
               <Image

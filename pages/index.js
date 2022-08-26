@@ -108,25 +108,25 @@ export default function Home() {
           </div>
         </div>
       </div>
-        <div className="bg-gray-900 rounded-xl mt-3 p-5 md:p-6 h-auto" id="skills">
-          <div className="mb-4 pb-3 text-3xl border-b-2 border-gray-800 flex">
-            <div className='text-red-500'>Skill</div>
-            <div className='text-cyan-500'>set</div>
-            <div className='text-gray-700 mx-2'>~</div>
-            <div className='text-sky-400'>I use</div>
-          </div>
-          <div className="mt-1 flex space-x-1">
-            <div><Image src="/icons/js.svg"               title="Javascript"    width={50} height={50} /></div>
-            <div><Image src="/icons/node-brands.svg"      title="NodeJs"        width={50} height={50} /></div>
-            <div><Image src="/icons/html5-brands.svg"     title="HTML5"         width={50} height={50} /></div>
-            <div><Image src="/icons/css3-brands.svg"      title="CSS3"          width={50} height={50} /></div>
-            <div><Image src="/icons/git-alt-brands.svg"   title="Git cli"       width={50} height={50} /></div>
-            <div><Image src="/icons/python-brands.svg"    title="Python"        width={50} height={50} /></div>
-            <div><Image src="/icons/bootstrap-brands.svg" title="Bootstrap"     width={50} height={50} /></div>
-            <div><Image src="/icons/terminal-solid.svg"   title="Bash/Terminal" width={50} height={50} /></div>
-            <div><Image src="/icons/react-brands.svg"     title="React"         width={50} height={50} /></div>
-            <div className='mt-7 text-gray-600'>and more...</div>
-          </div>
+      <div className="bg-gray-900 rounded-xl mt-3 p-5 md:p-6 h-auto" id="skills">
+        <div className="mb-4 pb-3 text-3xl border-b-2 border-gray-800 flex">
+          <div className='text-red-500'>Skill</div>
+          <div className='text-cyan-500'>set</div>
+          <div className='text-gray-700 mx-2'>~</div>
+          <div className='text-sky-400'>I use</div>
+        </div>
+        <div className="mt-1 flex space-x-1">
+          <div><Image src="/icons/js.svg"               title="Javascript"    width={50} height={50} /></div>
+          <div><Image src="/icons/node-brands.svg"      title="NodeJs"        width={50} height={50} /></div>
+          <div><Image src="/icons/html5-brands.svg"     title="HTML5"         width={50} height={50} /></div>
+          <div><Image src="/icons/css3-brands.svg"      title="CSS3"          width={50} height={50} /></div>
+          <div><Image src="/icons/git-alt-brands.svg"   title="Git cli"       width={50} height={50} /></div>
+          <div><Image src="/icons/python-brands.svg"    title="Python"        width={50} height={50} /></div>
+          <div><Image src="/icons/bootstrap-brands.svg" title="Bootstrap"     width={50} height={50} /></div>
+          <div><Image src="/icons/terminal-solid.svg"   title="Bash/Terminal" width={50} height={50} /></div>
+          <div><Image src="/icons/react-brands.svg"     title="React"         width={50} height={50} /></div>
+          <div className='mt-7 text-gray-600'>and more...</div>
+        </div>
       </div>
     </Layout>
   )

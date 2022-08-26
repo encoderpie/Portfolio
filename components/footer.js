@@ -33,6 +33,11 @@ function Navigation() {
           </Link>
         </li>
         <li>
+          <Link href="/tools/lookup">
+            <a className="mr-4 hover:underline md:mr-6">Discord Lookup</a>
+          </Link>
+        </li>
+        <li>
           <Link href="/projects">
             <a className="hover:underline">Projects</a>
           </Link>
